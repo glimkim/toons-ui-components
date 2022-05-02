@@ -1,11 +1,8 @@
-import Dark from "./dark"
-import Default from "./default"
+import Dark from './dark';
+import Default from './default';
 
 export interface Theme {
-        name : string;
-        colors: {
-                primary : string;
-        }
+  [key: string]: string | Theme;
 }
 
-export { Dark, Default }; 
+export { Dark, Default };
