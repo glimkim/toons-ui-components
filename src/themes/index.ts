@@ -1,8 +1,11 @@
 import Dark from './dark';
 import Default from './default';
-
 export interface Theme {
-  [key: string]: string | Theme;
+  name: string;
+  colors: {
+    primary: string;
+  };
+  borderRadius: string;
 }
 
 export { Dark, Default };
