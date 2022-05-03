@@ -13,7 +13,7 @@ const theme: DefaultTheme = {
       contrast: '#A4F4C4',
     },
   },
-  borderRadius: '0.5rem',
+  borderRadius: '0.6rem',
 };
 
 export default theme;
