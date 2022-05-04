@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type ButtonSize = 'small' | 'medium' | 'large';
 
-interface ButtonProps {
+export interface ButtonProps {
   children: React.ReactNode;
   size?: ButtonSize;
   onClick?: () => void;

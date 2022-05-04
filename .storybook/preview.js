@@ -1,9 +1,9 @@
 import { withThemesProvider } from 'themeprovider-storybook';
 import { Dark, Default } from '../src/themes/index.ts';
-import ComponentStyledProvider from './ComponentStyleProvider';
+import CustomComponentWrapper from './decorators/CustomComponentWrapper';
 
 const themes = [Dark, Default];
-export const decorators = [withThemesProvider(themes), ComponentStyledProvider];
+export const decorators = [withThemesProvider(themes), CustomComponentWrapper];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
