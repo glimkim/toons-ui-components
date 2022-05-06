@@ -1,6 +1,7 @@
 import { withThemesProvider } from 'themeprovider-storybook';
 import { Dark, Default } from '../src/themes/index.ts';
 import CustomComponentWrapper from './decorators/CustomComponentWrapper';
+import { themes as storybookThemes } from '@storybook/theming';
 
 const themes = [Dark, Default];
 export const decorators = [withThemesProvider(themes), CustomComponentWrapper];
@@ -12,5 +13,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  docs: {
+    theme: storybookThemes.dark,
   },
 };

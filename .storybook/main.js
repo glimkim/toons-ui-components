@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/preset-create-react-app',
     'themeprovider-storybook/register',
+    '@storybook/theming',
   ],
   core: {
     builder: '@storybook/builder-webpack5',
