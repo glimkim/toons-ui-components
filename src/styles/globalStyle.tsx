@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-const ToonsGlobalCss = css`
+export const ToonsGlobalCss = css`
   html,
   body,
   div,
@@ -130,4 +131,6 @@ const ToonsGlobalCss = css`
   }
 `;
 
-export default ToonsGlobalCss;
+export const GlobalStyles = createGlobalStyle`
+  ${ToonsGlobalCss}
+`;
