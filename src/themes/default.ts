@@ -12,6 +12,7 @@ const theme: DefaultTheme = {
       main: '#707070',
       contrast: '#A4F4C4',
     },
+    fontColor: '#2B2B2B',
   },
   borderRadius: '0.6rem',
 };
