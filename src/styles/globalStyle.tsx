@@ -88,6 +88,14 @@ export const ToonsGlobalCss = css`
     border: 0;
     font-size: 100%;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+  }
   * {
     padding: 0;
     margin: 0;
@@ -99,6 +107,7 @@ export const ToonsGlobalCss = css`
   }
   button {
     cursor: pointer;
+    background-color: transparent;
   }
   table {
     border-collapse: collapse;
