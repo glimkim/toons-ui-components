@@ -12,6 +12,7 @@ declare module 'styled-components' {
     colors: {
       primary: IPalette;
       secondary: IPalette;
+      fontColor: string;
     };
     borderRadius: string;
   }
