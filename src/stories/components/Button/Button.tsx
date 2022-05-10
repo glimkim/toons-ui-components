@@ -2,31 +2,37 @@ import React from 'react';
 import styled from 'styled-components';
 
 type ButtonSize = 'small' | 'medium' | 'large';
+type ButtonTheme = 'primary' | 'secondary';
 
 export interface ButtonProps {
   children: React.ReactNode;
   size?: ButtonSize;
-  onClick?: () => void;
+  buttonTheme?: ButtonTheme;
+  fullWidth?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ children, size = 'medium', ...props }: ButtonProps) => {
+const Button = ({ children, size = 'medium', buttonTheme = 'primary', fullWidth = false, ...props }: ButtonProps) => {
   return (
-    <ButtonComponent type="button" size={size} {...props}>
+    <ButtonComponent type="button" size={size} fullWidth={fullWidth} buttonTheme={buttonTheme} {...props}>
       {children}
     </ButtonComponent>
   );
 };
 
-const ButtonComponent = styled.button<{ size: ButtonSize }>`
+const ButtonComponent = styled.button<{ size: ButtonSize; fullWidth: boolean; buttonTheme: ButtonTheme }>`
   display: block;
   padding: ${(props) => (props.size === 'medium' ? '0 1rem' : props.size === 'large' ? '0 1.43rem' : '0 0.7rem')};
+  width: ${(props) => (props.fullWidth ? '100%' : 'fit-content')};
   height: ${(props) => (props.size === 'medium' ? '3rem' : props.size === 'large' ? '3.14rem' : '2.57rem')};
   line-height: ${(props) => (props.size === 'medium' ? '3rem' : props.size === 'large' ? '3.14rem' : '2.57rem')};
-  background-color: ${(props) => props.theme.colors.primary.main};
+  background-color: ${(props) =>
+    props.buttonTheme === 'primary' ? props.theme.colors.primary.main : props.theme.colors.secondary.main};
   border-radius: ${(props) => props.theme.borderRadius};
   text-align: center;
   font-size: 1rem;
-  color: ${(props) => props.theme.colors.primary.contrast};
+  color: ${(props) =>
+    props.buttonTheme === 'primary' ? props.theme.colors.primary.contrast : props.theme.colors.secondary.contrast};
   font-weight: bold;
   box-shadow: 1.5px 1.5px 5px rgb(43, 43, 43, 0.2);
   transition: 0.3s ease-in-out;

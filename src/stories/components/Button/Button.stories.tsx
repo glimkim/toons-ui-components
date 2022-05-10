@@ -8,13 +8,33 @@ export default {
   title: 'Components/Button',
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+      defaultValue: 'medium',
+    },
+    buttonTheme: {
+      control: {
+        type: 'radio',
+      },
+      defaultValue: 'primary',
+    },
+    fullWidth: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
+  },
 } as ComponentMeta<typeof Button>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => <Button {...args}>{children}</Button>;
 
 export const ToonsButton = Template.bind({});
+
 ToonsButton.args = {
   children: 'BUTTON',
 };
