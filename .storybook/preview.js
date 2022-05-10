@@ -3,7 +3,7 @@ import { Dark, Default } from '../src/themes/index.ts';
 import CustomComponentWrapper from './decorators/CustomComponentWrapper';
 import { themes as storybookThemes } from '@storybook/theming';
 
-const themes = [Dark, Default];
+const themes = [Default, Dark];
 export const decorators = [withThemesProvider(themes), CustomComponentWrapper];
 
 export const parameters = {
