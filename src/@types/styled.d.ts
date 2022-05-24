@@ -1,3 +1,4 @@
+import { Theme } from './../../src/themes/index';
 import 'styled-components';
 
 interface IPalette {
@@ -7,13 +8,5 @@ interface IPalette {
 
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  export interface DefaultTheme {
-    name: string;
-    colors: {
-      primary: IPalette;
-      secondary: IPalette;
-      fontColor: string;
-    };
-    borderRadius: string;
-  }
+  export interface DefaultTheme extends Theme {}
 }
