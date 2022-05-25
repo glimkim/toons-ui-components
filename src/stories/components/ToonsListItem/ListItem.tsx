@@ -102,7 +102,7 @@ const ContentsBox = styled.div`
     text-overflow: ellipsis;
     line-height: 1.25rem;
     white-space: nowrap;
-    color: ${(props) => props.theme.colors.fontColor};
+    color: ${(props) => props.theme.colors.gray50};
   }
 
   button.alertBtn {
@@ -115,7 +115,7 @@ const ContentsBox = styled.div`
     display: block;
     font-size: 1.25rem;
     line-height: 1.25rem;
-    color: ${(props) => props.theme.colors.secondary.main};
+    color: ${(props) => props.theme.colors.gray40};
   }
 
   span.day {
@@ -133,14 +133,14 @@ const ToonsLi = styled.li<{ isActive: boolean }>`
   min-height: 7.86rem;
   padding: 0.7rem;
   gap: 0.7rem;
-  border: 1px solid ${(props) => props.theme.colors.primary.main};
+  border: 1px solid ${(props) => props.theme.colors.main};
   border-radius: 0.36rem;
   background-image: url(${ToonsItemBG});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: ${(props) =>
-    props.isActive ? props.theme.colors.primary.main : props.theme.name === 'dark' ? 'transparent' : '#fff'};
+    props.isActive ? props.theme.colors.main : props.theme.name === 'dark' ? 'transparent' : '#fff'};
   @media screen and (min-width: 1340px) {
   }
   transition: 0.3s ease-in-out;

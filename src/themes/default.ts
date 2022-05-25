@@ -4,17 +4,17 @@ import { DefaultTheme } from 'styled-components';
 const theme: DefaultTheme = {
   name: 'default',
   colors: {
-    primary: {
-      main: '#A4F4C4',
-      contrast: '#2B2B2B',
-    },
-    secondary: {
-      main: '#707070',
-      contrast: '#A4F4C4',
-    },
-    fontColor: '#2B2B2B',
+    main: '#A4F4C4',
+    white: '#fff',
+    gray00: '#F2F2F2',
+    gray10: '#EDEDED',
+    gray20: '#CCCCCC',
+    gray30: '#999999',
+    gray40: '#707070',
+    gray50: '#333333',
+    red: '#D23F3F',
   },
-  borderRadius: '0.6rem',
+  borderRadius: '0.4em',
 };
 
 export default theme;
