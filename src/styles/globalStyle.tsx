@@ -112,6 +112,9 @@ export const ToonsGlobalCss = css`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  input {
+    outline: none;
+  }
 
   @media screen and (min-width: 1440px) {
     html,
