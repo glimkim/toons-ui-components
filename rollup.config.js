@@ -4,6 +4,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
+import image from '@rollup/plugin-image';
+import svgr from '@svgr/rollup';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const packageJson = require('./package.json');
@@ -27,6 +29,8 @@ export default {
     resolve(),
     json(),
     commonjs(),
+    image(),
+    svgr(),
     typescript({ useTsconfigDeclarationDir: true }),
     postcss({
       extensions: ['.css'],
