@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React, { useState, useCallback } from 'react';
+import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 
 interface CheckboxProps {
   id: string;
@@ -19,10 +20,12 @@ function Checkbox({ id, onChange, defaultValue = false }: CheckboxProps) {
   );
 
   return (
-    <CheckboxContainer>
-      <input type="checkbox" id={id} onChange={onCheckboxChange} checked={isChecked} />
-      <CustomCheckbox htmlFor={id} isChecked={isChecked} />
-    </CheckboxContainer>
+    <ToonsThemeProvider>
+      <CheckboxContainer>
+        <input type="checkbox" id={id} onChange={onCheckboxChange} checked={isChecked} />
+        <CustomCheckbox htmlFor={id} isChecked={isChecked} />
+      </CheckboxContainer>
+    </ToonsThemeProvider>
   );
 }
 

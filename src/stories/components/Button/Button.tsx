@@ -1,4 +1,5 @@
 import React from 'react';
+import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
 
 type ButtonSize = 'small' | 'medium' | 'large';
@@ -14,9 +15,11 @@ export interface ButtonProps {
 
 const Button = ({ children, size = 'medium', buttonTheme = 'primary', fullWidth = false, ...props }: ButtonProps) => {
   return (
-    <ButtonComponent type="button" size={size} fullWidth={fullWidth} buttonTheme={buttonTheme} {...props}>
-      {children}
-    </ButtonComponent>
+    <ToonsThemeProvider>
+      <ButtonComponent type="button" size={size} fullWidth={fullWidth} buttonTheme={buttonTheme} {...props}>
+        {children}
+      </ButtonComponent>
+    </ToonsThemeProvider>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
 
 interface InputProps {
@@ -13,13 +14,15 @@ interface InputProps {
 
 function Input({ id, onChange, label, type = 'text', placeholder, errorText, fullWidth = true }: InputProps) {
   return (
-    <InputContainer fullWidth={fullWidth} hasError={!!errorText}>
-      {label && <label htmlFor={id}>{label}</label>}
-      <div className="inputWrapper">
-        <input id={id} type={type} onChange={onChange} placeholder={placeholder} />
-        {errorText && <span className="errorText">{errorText}</span>}
-      </div>
-    </InputContainer>
+    <ToonsThemeProvider>
+      <InputContainer fullWidth={fullWidth} hasError={!!errorText}>
+        {label && <label htmlFor={id}>{label}</label>}
+        <div className="inputWrapper">
+          <input id={id} type={type} onChange={onChange} placeholder={placeholder} />
+          {errorText && <span className="errorText">{errorText}</span>}
+        </div>
+      </InputContainer>
+    </ToonsThemeProvider>
   );
 }
 
@@ -46,6 +49,10 @@ const InputContainer = styled.div<{ fullWidth: boolean; hasError: boolean }>`
 
     &:focus {
       box-shadow: 1px 2px 5px ${({ theme, hasError }) => (hasError ? theme.colors.red + '50' : theme.colors.main + 50)};
+    }
+    &::placeholder {
+      color: ${({ theme }) => theme.colors.gray20};
+      font-weight: bold;
     }
   }
 

@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { ReactComponent as AlertIcon } from '../../assets/alert-icon.svg';
 import { ReactComponent as ActiveAlertIcon } from '../../assets/alert-icon-active.svg';
 import ToonsItemBG from '../../assets/toons-item-bg.svg';
+import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 
 type Days = 'MON' | 'TUE' | 'WED' | 'THUR' | 'FRI' | 'SAT' | 'SUN';
 
@@ -56,22 +57,24 @@ const ListItem = ({
   );
 
   return (
-    <ToonsLi isActive={isActive} {...props}>
-      <ImageFigure>
-        <img src={thumbnailURL || 'https://via.placeholder.com/90x90'} alt={name + 'thumbnail'} />
-      </ImageFigure>
-      <ContentsBox>
-        <button className="alertBtn" onClick={onClickItem}>
-          {isActive ? <ActiveAlertIcon /> : <AlertIcon />}
-        </button>
-        <h5>{name}</h5>
-        <span className="author">{author}</span>
-        <span className="day">{days[day]}웹툰</span>
-        <Button size="small" fullWidth buttonTheme={isActive ? 'secondary' : 'primary'} onClick={onClickViewLink}>
-          VIEW →
-        </Button>
-      </ContentsBox>
-    </ToonsLi>
+    <ToonsThemeProvider>
+      <ToonsLi isActive={isActive} {...props}>
+        <ImageFigure>
+          <img src={thumbnailURL || 'https://via.placeholder.com/90x90'} alt={name + 'thumbnail'} />
+        </ImageFigure>
+        <ContentsBox>
+          <button className="alertBtn" onClick={onClickItem}>
+            {isActive ? <ActiveAlertIcon /> : <AlertIcon />}
+          </button>
+          <h5>{name}</h5>
+          <span className="author">{author}</span>
+          <span className="day">{days[day]}웹툰</span>
+          <Button size="small" fullWidth buttonTheme={isActive ? 'secondary' : 'primary'} onClick={onClickViewLink}>
+            VIEW →
+          </Button>
+        </ContentsBox>
+      </ToonsLi>
+    </ToonsThemeProvider>
   );
 };
 
