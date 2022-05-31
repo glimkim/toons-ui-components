@@ -48,7 +48,7 @@ const InputContainer = styled.div<{ fullWidth: boolean; hasError: boolean }>`
     transition: 0.3s ease-in-out;
 
     &:focus {
-      box-shadow: 1px 2px 5px ${({ theme, hasError }) => (hasError ? theme.colors.red + '50' : theme.colors.main + 50)};
+      box-shadow: 1px 2px 5px ${({ theme, hasError }) => (hasError ? theme.colors.red + '50' : theme.colors.main + 60)};
     }
     &::placeholder {
       color: ${({ theme }) => theme.colors.gray20};
