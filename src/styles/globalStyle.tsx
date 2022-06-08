@@ -119,12 +119,6 @@ export const ToonsGlobalCss = css`
   @media screen and (min-width: 1440px) {
     html,
     body {
-      font-size: 18px;
-    }
-  }
-  @media screen and (max-width: 1439px) {
-    html,
-    body {
       font-size: 16px;
     }
   }
