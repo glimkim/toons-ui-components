@@ -1,6 +1,6 @@
 {
   "name": "toons-components",
-  "version": "0.1.19",
+  "version": "0.1.21",
   "description": "component library for Toons project",
   "license": "UNLICENSED",
   "author": {
@@ -98,6 +98,7 @@
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.5"
   }
 }
