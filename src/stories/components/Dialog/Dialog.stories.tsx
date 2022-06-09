@@ -10,7 +10,7 @@ export default {
       control: {
         type: 'boolean',
       },
-      defaultValue: true,
+      defaultValue: false,
     },
     children: {
       control: {

@@ -26,7 +26,7 @@ function Dialog({ open, children, onClose }: DialogProps) {
 
   return (
     <ToonsThemeProvider>
-      <CSSTransition in={dialogOpen} timeout={300} unmountOnExit>
+      <CSSTransition in={dialogOpen} timeout={800} unmountOnExit>
         <DialogContainer>
           <div className="dialogContents">{children}</div>
           <div className="dialogBg" onClick={handleClose} />
@@ -43,14 +43,18 @@ const DialogContainer = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  opacity: 1;
   overflow: hidden;
   div.dialogContents {
     position: absolute;
     z-index: 600;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
+    opacity: 0;
+    animation-name: appearFromBottom;
+    animation-duration: 0.4s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
   }
   div.dialogBg {
     position: absolute;
@@ -60,10 +64,69 @@ const DialogContainer = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+  &.exit {
+    div.dialogContents {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+    div.dialogBg {
+      opacity: 1;
+    }
+  }
+  &.exit-active {
+    div.dialogContents {
+      animation-name: disappearToBottom;
+      animation-duration: 0.2s;
+      animation-fill-mode: forwards;
+    }
+    div.dialogBg {
+      animation-name: fadeOut;
+      animation-duration: 0.3s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.6s;
+    }
   }
 
-  &.exit-done {
-    opacity: 0;
+  @keyframes appearFromBottom {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -30%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  @keyframes disappearToBottom {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -30%);
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 `;
 
