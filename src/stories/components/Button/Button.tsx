@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
 
 type ButtonSize = 'small' | 'medium' | 'large';
 type ButtonTheme = 'primary' | 'secondary';
 
-export interface ButtonProps {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   size?: ButtonSize;
   buttonTheme?: ButtonTheme;
   fullWidth?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({ children, size = 'medium', buttonTheme = 'primary', fullWidth = false, ...props }: ButtonProps) => {

@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
 
-interface InputProps {
+interface InputProps extends HTMLAttributes<HTMLInputElement> {
   id: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   placeholder?: string;
   type?: 'email' | 'number' | 'password' | 'tel' | 'text' | 'time' | 'url';

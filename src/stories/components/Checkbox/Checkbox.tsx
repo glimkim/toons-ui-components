@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, HTMLAttributes } from 'react';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 
-interface CheckboxProps {
-  id: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+interface CheckboxProps extends Omit<HTMLAttributes<HTMLInputElement>, 'defaultValue'> {
   defaultValue?: boolean;
 }
 
@@ -14,7 +12,7 @@ function Checkbox({ id, onChange, defaultValue = false }: CheckboxProps) {
   const onCheckboxChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setIsChecked((prev) => !prev);
-      onChange(e);
+      onChange && onChange(e);
     },
     [onChange],
   );
