@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, RefObject, ForwardedRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ interface DialogProps {
   onClose: () => void;
 }
 
-function Dialog({ open, children, onClose }: DialogProps) {
+const Dialog = React.forwardRef(({ open, children, onClose }: DialogProps, ref: ForwardedRef<HTMLDivElement>) => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(open);
   const handleClose = useCallback(() => {
     setDialogOpen(false);
@@ -27,29 +27,30 @@ function Dialog({ open, children, onClose }: DialogProps) {
   return (
     <ToonsThemeProvider>
       <CSSTransition in={dialogOpen} timeout={800} unmountOnExit>
-        <DialogContainer>
+        <DialogContainer ref={ref}>
           <div className="dialogContents">{children}</div>
           <div className="dialogBg" onClick={handleClose} />
         </DialogContainer>
       </CSSTransition>
     </ToonsThemeProvider>
   );
-}
+});
 
 const DialogContainer = styled.div`
   position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   div.dialogContents {
-    position: absolute;
+    position: relative;
     z-index: 600;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -30%);
+    transform: translateY(20%);
     opacity: 0;
     animation-name: appearFromBottom;
     animation-duration: 0.4s;
@@ -71,7 +72,7 @@ const DialogContainer = styled.div`
   }
   &.exit {
     div.dialogContents {
-      transform: translate(-50%, -50%);
+      transform: translateY(0);
       opacity: 1;
     }
     div.dialogBg {
@@ -95,21 +96,21 @@ const DialogContainer = styled.div`
   @keyframes appearFromBottom {
     0% {
       opacity: 0;
-      transform: translate(-50%, -30%);
+      transform: translateY(20%);
     }
     100% {
       opacity: 1;
-      transform: translate(-50%, -50%);
+      transform: translateY(0);
     }
   }
   @keyframes disappearToBottom {
     0% {
       opacity: 1;
-      transform: translate(-50%, -50%);
+      transform: translateY(0);
     }
     100% {
       opacity: 0;
-      transform: translate(-50%, -30%);
+      transform: translateY(20%);
     }
   }
   @keyframes fadeIn {
