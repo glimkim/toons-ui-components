@@ -63,8 +63,6 @@ const ToonsLoader = styled.div<{ isPartial: boolean }>`
   }
   .lds-ellipsis div {
     position: absolute;
-    width: 1rem;
-    height: 1rem;
     border-radius: 50%;
     background: #fff;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
