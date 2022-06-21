@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
 
-interface DialogProps {
+export interface DialogProps {
   open: boolean;
   children: React.ReactNode;
   onClose: () => void;
