@@ -3,7 +3,7 @@ import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled, { css } from 'styled-components';
 
 interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
-  isPartial: boolean;
+  isPartial?: boolean;
 }
 
 function Loader({ isPartial = false }: LoaderProps) {
@@ -41,6 +41,7 @@ const ToonsLoader = styled.div<{ isPartial: boolean }>`
         `
       : css`
           position: fixed;
+          z-index: 1010;
           top: 0;
           left: 0;
           width: 100vw;
