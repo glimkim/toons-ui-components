@@ -6,11 +6,9 @@ export default {
   title: 'Components/Alert',
   component: Alert,
   argTypes: {
-    isPartial: {
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
+    alertContents: {
+      control: 'string',
+      defaultValue: 'Hello World',
     },
   },
 } as ComponentMeta<typeof Alert>;
