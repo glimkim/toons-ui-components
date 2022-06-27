@@ -7,8 +7,28 @@ export default {
   component: Alert,
   argTypes: {
     alertContents: {
-      control: 'string',
+      control: {
+        type: 'text',
+      },
       defaultValue: 'Hello World',
+    },
+    alertTitle: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'Notification',
+    },
+    alertType: {
+      control: {
+        type: 'select',
+      },
+      defaultValue: 'INFO',
+    },
+    open: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
     },
   },
 } as ComponentMeta<typeof Alert>;
