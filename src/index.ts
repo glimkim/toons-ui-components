@@ -8,7 +8,7 @@ import Checkbox from './stories/components/Checkbox/Checkbox';
 import { ToonsGlobalCss } from './styles/globalStyle';
 import Dialog from './stories/components/Dialog/Dialog';
 import Loader from './stories/components/Loader/Loader';
-import Alert from './stories/components/Alert/Alert';
+import Alert, { AlertProps } from './stories/components/Alert/Alert';
 
 export { Button, Input, ToonsListItem, Checkbox, Loader, Alert, Dialog, ToonsGlobalCss, theme, darkTheme };
-export type { ToonsTheme };
+export type { ToonsTheme, AlertProps };
