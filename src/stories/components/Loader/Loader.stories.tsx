@@ -12,6 +12,12 @@ export default {
       },
       defaultValue: false,
     },
+    theme: {
+      control: {
+        type: 'select',
+      },
+      defaultValue: 'mix',
+    },
   },
 } as ComponentMeta<typeof Loader>;
 

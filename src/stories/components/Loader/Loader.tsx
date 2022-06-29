@@ -1,15 +1,18 @@
+import { color } from '@storybook/theming';
 import React, { HTMLAttributes } from 'react';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled, { css } from 'styled-components';
 
+type LoaderTheme = 'white' | 'mix' | 'main';
 interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   isPartial?: boolean;
+  theme?: LoaderTheme;
 }
 
-function Loader({ isPartial = false }: LoaderProps) {
+function Loader({ isPartial = false, theme = 'white' }: LoaderProps) {
   return (
     <ToonsThemeProvider>
-      <ToonsLoader isPartial={isPartial}>
+      <ToonsLoader isPartial={isPartial} loaderTheme={theme}>
         <div className="lds-ellipsis">
           <div></div>
           <div></div>
@@ -21,7 +24,7 @@ function Loader({ isPartial = false }: LoaderProps) {
   );
 }
 
-const ToonsLoader = styled.div<{ isPartial: boolean }>`
+const ToonsLoader = styled.div<{ isPartial: boolean; loaderTheme: LoaderTheme }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,7 +68,7 @@ const ToonsLoader = styled.div<{ isPartial: boolean }>`
   .lds-ellipsis div {
     position: absolute;
     border-radius: 50%;
-    background: #fff;
+    background: ${({ loaderTheme, theme: { colors } }) => (loaderTheme === 'main' ? colors.main : '#fff')};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
     transition: 0.3s;
   }
@@ -76,6 +79,7 @@ const ToonsLoader = styled.div<{ isPartial: boolean }>`
   .lds-ellipsis div:nth-child(2) {
     left: 8px;
     animation: lds-ellipsis2 0.6s infinite;
+    background: ${({ loaderTheme, theme: { colors } }) => (loaderTheme === 'white' ? '#fff' : colors.main)};
   }
   .lds-ellipsis div:nth-child(3) {
     left: 32px;
