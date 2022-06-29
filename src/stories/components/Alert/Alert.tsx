@@ -19,9 +19,10 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   alertType: AlertType;
   alertTitle: string;
   alertContents?: React.ReactNode;
+  onCloseAlert?: () => void;
 }
 
-function Alert({ open, alertType, alertContents, alertTitle }: AlertProps) {
+function Alert({ open, alertType, alertContents, alertTitle, onCloseAlert }: AlertProps) {
   const alertTheme: AlertTheme = useMemo(() => {
     const getAlertTheme = (): AlertTheme => {
       switch (alertType) {
@@ -62,27 +63,26 @@ function Alert({ open, alertType, alertContents, alertTitle }: AlertProps) {
   const [alertOpen, setAlertOpen] = useState(open);
 
   const handleAlertClose = useCallback(() => {
+    onCloseAlert && onCloseAlert();
     setAlertOpen(false);
-  }, []);
+  }, [onCloseAlert]);
 
   useEffect(() => {
     setAlertOpen(open);
-    const closeAlertIn5s = setInterval(() => {
-      handleAlertClose();
-    }, 5000);
+    let closeAlertIn5s: NodeJS.Timer | undefined;
     if (!open) {
-      clearInterval(closeAlertIn5s);
-    }
-
-    return () => {
-      clearInterval(closeAlertIn5s);
+      !!closeAlertIn5s && clearInterval(closeAlertIn5s);
       handleAlertClose();
-    };
+    } else {
+      closeAlertIn5s = setInterval(() => {
+        handleAlertClose();
+      }, 5000);
+    }
   }, [open]);
 
   return (
     <ToonsThemeProvider>
-      <CSSTransition in={alertOpen} timeout={500}>
+      <CSSTransition in={alertOpen} timeout={500} unmountOnExit>
         <AlertContainer alertTheme={alertTheme} hasContents={!!alertContents} onClick={handleAlertClose}>
           <figure className="alertIcon">{alertTheme.icon}</figure>
           {alertTitle && <h6>{alertTitle}</h6>}
