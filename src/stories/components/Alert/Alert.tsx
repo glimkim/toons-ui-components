@@ -69,14 +69,13 @@ function Alert({ open, alertType, alertContents, alertTitle, onCloseAlert }: Ale
 
   useEffect(() => {
     setAlertOpen(open);
-    let closeAlertIn5s: NodeJS.Timer | undefined;
+
     if (!open) {
-      !!closeAlertIn5s && clearInterval(closeAlertIn5s);
-      handleAlertClose();
-    } else {
-      closeAlertIn5s = setInterval(() => {
+      setTimeout(() => {
         handleAlertClose();
       }, 5000);
+      handleAlertClose();
+    } else {
     }
   }, [open]);
 
