@@ -39,7 +39,8 @@ const ButtonComponent = styled.button<{ size: ButtonSize; fullWidth: boolean; bu
   transition: 0.3s ease-in-out;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.main + '75'};
+    background-color: ${(props) =>
+      (props.buttonTheme === 'primary' ? props.theme.colors.main : props.theme.colors.gray40) + '90'};
   }
 `;
 
