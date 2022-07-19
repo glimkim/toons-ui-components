@@ -13,8 +13,7 @@ export const ToonsListItem = Template.bind({});
 
 ToonsListItem.args = {
   name: 'NAME',
-  author: 'Lim Kim',
-  day: 'FRI',
+  day: 'FRIDAY',
 };
 
 /* export const LoggedOut = Template.bind({});
