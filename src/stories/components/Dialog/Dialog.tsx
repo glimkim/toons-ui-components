@@ -52,10 +52,7 @@ const DialogContainer = styled.div`
     z-index: 600;
     transform: translateY(20%);
     opacity: 0;
-    animation-name: appearFromBottom;
-    animation-duration: 0.4s;
-    animation-delay: 0.3s;
-    animation-fill-mode: forwards;
+    transition: 0.4s;
   }
   div.dialogBg {
     position: absolute;
@@ -66,9 +63,21 @@ const DialogContainer = styled.div`
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 0;
-    animation-name: fadeIn;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
+    transition: 0.4s;
+  }
+  &.enter-active {
+    div.dialogBg {
+      opacity: 1;
+    }
+  }
+  &.enter-done {
+    div.dialogContents {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    div.dialogBg {
+      opacity: 1;
+    }
   }
   &.exit {
     div.dialogContents {
@@ -93,16 +102,6 @@ const DialogContainer = styled.div`
     }
   }
 
-  @keyframes appearFromBottom {
-    0% {
-      opacity: 0;
-      transform: translateY(20%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
   @keyframes disappearToBottom {
     0% {
       opacity: 1;
@@ -111,14 +110,6 @@ const DialogContainer = styled.div`
     100% {
       opacity: 0;
       transform: translateY(20%);
-    }
-  }
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
   @keyframes fadeOut {
