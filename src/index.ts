@@ -9,6 +9,7 @@ import { ToonsGlobalCss } from './styles/globalStyle';
 import Dialog from './stories/components/Dialog/Dialog';
 import Loader from './stories/components/Loader/Loader';
 import Alert, { AlertProps } from './stories/components/Alert/Alert';
+import SectionBar from './stories/components/SectionBar/SectionBar';
 
-export { Button, Input, ToonsListItem, Checkbox, Loader, Alert, Dialog, ToonsGlobalCss, theme, darkTheme };
+export { Button, Input, ToonsListItem, Checkbox, Loader, Alert, Dialog, SectionBar, ToonsGlobalCss, theme, darkTheme };
 export type { ToonsTheme, AlertProps };

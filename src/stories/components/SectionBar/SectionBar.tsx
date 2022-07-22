@@ -38,6 +38,7 @@ const BarContainer = styled.div`
   width: 100%;
   height: 2.13rem;
   padding-bottom: 0.7rem;
+  margin-bottom: 2rem;
   border-bottom: 1px solid ${({ theme: { colors } }) => colors.gray50};
   transform: scaleX(0);
   transform-origin: left center;
