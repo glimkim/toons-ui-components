@@ -113,6 +113,12 @@ const ContentsBox = styled.div`
     right: 0;
     svg {
       width: 100%;
+      transition: 0.4s;
+    }
+    &:hover {
+      svg {
+        transform: scale(1.4, 1.4);
+      }
     }
 
     &.active {
@@ -165,6 +171,10 @@ const ToonsLi = styled.li<{ isActive: boolean }>`
   background-color: ${(props) =>
     props.isActive ? props.theme.colors.main : props.theme.name === 'dark' ? 'transparent' : '#fff'};
   transition: 0.3s ease-in-out;
+
+  @media screen and (max-width: 1280px) {
+    width: 308px;
+  }
 `;
 
 export default ListItem;
