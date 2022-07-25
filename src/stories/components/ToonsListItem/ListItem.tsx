@@ -58,10 +58,10 @@ const ListItem = ({
   return (
     <ToonsThemeProvider>
       <ToonsLi isActive={isActive} {...props}>
-        <ImageFigure>
+        <ImageFigure className="imageBox">
           <img src={thumbnail || 'https://via.placeholder.com/90x90'} alt={name + 'thumbnail'} />
         </ImageFigure>
-        <ContentsBox>
+        <ContentsBox className="contentBox">
           <button className={isActive ? 'active alertBtn' : 'alertBtn'} onClick={onClickItem}>
             {isActive ? <ActiveAlertIcon /> : <AlertIcon />}
           </button>
@@ -77,8 +77,6 @@ const ListItem = ({
 };
 
 const ImageFigure = styled.figure`
-  width: 90px;
-  height: 90px;
   overflow: hidden;
   img {
     width: 100%;
@@ -89,12 +87,10 @@ const ImageFigure = styled.figure`
 `;
 
 const ContentsBox = styled.div`
-  position: relative;
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
   justify-content: center;
-  width: calc(100% - 90px);
 
   h5 {
     font-size: 1.25rem;
@@ -109,8 +105,8 @@ const ContentsBox = styled.div`
 
   button.alertBtn {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0.7rem;
+    right: 0.7rem;
     svg {
       width: 100%;
       transition: 0.4s;
@@ -156,10 +152,9 @@ const ContentsBox = styled.div`
 `;
 
 const ToonsLi = styled.li<{ isActive: boolean }>`
+  position: relative;
   display: flex;
-  align-items: center;
   width: 243px;
-  min-height: 7.86rem;
   padding: 0.7rem;
   gap: 1rem;
   border: 1px solid ${(props) => props.theme.colors.main};
@@ -172,8 +167,50 @@ const ToonsLi = styled.li<{ isActive: boolean }>`
     props.isActive ? props.theme.colors.main : props.theme.name === 'dark' ? 'transparent' : '#fff'};
   transition: 0.3s ease-in-out;
 
-  @media screen and (max-width: 1280px) {
-    width: 308px;
+  @media screen and (min-width: 767px) {
+    align-items: center;
+    min-height: 7.86rem;
+    div.contentBox {
+      width: calc(100% - 90px);
+    }
+    figure.imageBox {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  @media screen and (max-width: calc(1380px)) {
+    width: 300px;
+  }
+  @media screen and (max-width: 1300px) {
+    width: 233px;
+  }
+  @media screen and (max-width: 1250px) {
+    width: 260px;
+  }
+  @media screen and (max-width: 1150px) {
+    width: 300px;
+  }
+  @media screen and (max-width: 975px) {
+    width: 200px;
+  }
+  @media screen and (max-width: 880px) {
+    width: 250px;
+  }
+  @media screen and (max-width: 820px) {
+    width: 233px;
+  }
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 133px;
+    min-height: 12.5rem;
+    div.contentBox {
+      width: 100%;
+    }
+    figure.imageBox {
+      width: 85px;
+      height: 85px;
+    }
   }
 `;
 
