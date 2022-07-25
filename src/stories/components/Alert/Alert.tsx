@@ -70,12 +70,10 @@ function Alert({ open, alertType, alertContents, alertTitle, onCloseAlert }: Ale
   useEffect(() => {
     setAlertOpen(open);
 
-    if (!open) {
+    if (open) {
       setTimeout(() => {
         handleAlertClose();
       }, 5000);
-      handleAlertClose();
-    } else {
     }
   }, [open]);
 
