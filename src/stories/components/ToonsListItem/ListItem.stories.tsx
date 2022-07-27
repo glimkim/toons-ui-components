@@ -14,6 +14,9 @@ export const ToonsListItem = Template.bind({});
 ToonsListItem.args = {
   name: 'NAME',
   day: 'FRIDAY',
+  onToggleItem: (isActive, handleToggleView) => {
+    handleToggleView();
+  },
 };
 
 /* export const LoggedOut = Template.bind({});

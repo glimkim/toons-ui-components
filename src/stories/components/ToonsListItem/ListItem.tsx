@@ -12,7 +12,7 @@ export interface ListItemProps extends HTMLAttributes<HTMLLIElement> {
   day: DayOfWeek;
   thumbnail: string;
   link: string;
-  onToggleItem: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onToggleItem: (isActive: boolean, handleToggleView: () => void) => void;
   isActive?: boolean;
 }
 
@@ -34,15 +34,21 @@ const ListItem = ({
   thumbnail,
   link,
   onToggleItem,
-  isActive: initialActive = false,
+  isActive: initialActive = true,
   ...props
 }: ListItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(initialActive);
+  const [alertBtnClassName, setAlertBtnClassName] = useState('alertBtn');
 
   const onClickItem = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      onToggleItem(e);
-      setIsActive((prev) => !prev);
+      e.preventDefault();
+      onToggleItem(isActive, () => {
+        setIsActive((prev) => {
+          setAlertBtnClassName(prev ? 'alertBtn' : 'active alertBtn');
+          return !prev;
+        });
+      });
     },
     [onToggleItem],
   );
@@ -62,7 +68,7 @@ const ListItem = ({
           <img src={thumbnail || 'https://via.placeholder.com/90x90'} alt={name + 'thumbnail'} />
         </ImageFigure>
         <ContentsBox className="contentBox">
-          <button className={isActive ? 'active alertBtn' : 'alertBtn'} onClick={onClickItem}>
+          <button className={alertBtnClassName} onClick={onClickItem}>
             {isActive ? <ActiveAlertIcon /> : <AlertIcon />}
           </button>
           <h5>{name}</h5>
