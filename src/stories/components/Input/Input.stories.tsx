@@ -35,6 +35,14 @@ export default {
       },
       defaultValue: 'placeholder',
     },
+    withBtn: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: {
+        btnText: 'Button',
+      },
+    },
   },
 } as ComponentMeta<typeof Input>;
 
