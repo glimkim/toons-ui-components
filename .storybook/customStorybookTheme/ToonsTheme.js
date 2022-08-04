@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import ToonsLogo from '../../static/logo_dark@2x.png';
+import ToonsLogo from '../../static/logo_dark.png';
 
 export default create({
   base: 'dark',
@@ -7,7 +7,7 @@ export default create({
   brandUrl: '/',
   brandImage: ToonsLogo,
 
-  colorPrimary: '#A4F4C4',
+  colorPrimary: '#92CFFF',
   colorSecondary: '#777',
 
   appBg: '#2B2B2B',
@@ -20,5 +20,5 @@ export default create({
   textInverseColor: 'rgba(255,255,255,0.9)',
 
   // Toolbar default and active colors
-  barSelectedColor: '#A4F4C4',
+  barSelectedColor: '#92CFFF',
 });
