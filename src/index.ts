@@ -10,6 +10,20 @@ import Dialog from './stories/components/Dialog/Dialog';
 import Loader from './stories/components/Loader/Loader';
 import Alert, { AlertProps } from './stories/components/Alert/Alert';
 import SectionBar from './stories/components/SectionBar/SectionBar';
+import Logo from './stories/components/Logo/Logo';
 
-export { Button, Input, ToonsListItem, Checkbox, Loader, Alert, Dialog, SectionBar, ToonsGlobalCss, theme, darkTheme };
+export {
+  Button,
+  Input,
+  ToonsListItem,
+  Checkbox,
+  Loader,
+  Alert,
+  Dialog,
+  SectionBar,
+  Logo,
+  ToonsGlobalCss,
+  theme,
+  darkTheme,
+};
 export type { ToonsTheme, AlertProps };
