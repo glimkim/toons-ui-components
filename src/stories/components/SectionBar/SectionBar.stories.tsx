@@ -9,6 +9,9 @@ export default {
 
 const Template: ComponentStory<typeof SectionBar> = (args) => <SectionBar {...args} />;
 
-export const ToonsLoader = Template.bind({});
+export const ToonsSectionBar = Template.bind({});
 
-ToonsLoader.args = {};
+ToonsSectionBar.args = {
+  isActive: true,
+  platform: 'NAVER',
+};
