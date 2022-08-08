@@ -1,3 +1,4 @@
+import TabBar from './stories/components/TabBar/TabBar';
 import { Theme as ToonsTheme } from './themes/index';
 import theme from './themes/default';
 import darkTheme from './themes/dark';
@@ -22,6 +23,7 @@ export {
   Dialog,
   SectionBar,
   Logo,
+  TabBar,
   ToonsGlobalCss,
   theme,
   darkTheme,
