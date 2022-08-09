@@ -1,9 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 
+interface Tab {
+  title: string;
+  contents: React.ReactNode;
+}
 interface LogoProps {
   headTitle?: string;
-  tabs: string[];
+  tabs: Tab[];
 }
 
 function TabBar({ headTitle, tabs }: LogoProps) {
@@ -28,12 +32,12 @@ function TabBar({ headTitle, tabs }: LogoProps) {
           {tabs.map((_tab, index) => (
             <Tab key={index} isActive={activeTab === index}>
               <button onClick={() => onClickTab(index)}>
-                <p>{_tab}</p>
+                <p>{_tab.title}</p>
               </button>
             </Tab>
           ))}
         </ul>
-        <div className="tabContents"></div>
+        <div className="tabContents">{tabs[activeTab].contents}</div>
       </ToonsTabBar>
     </TabBarContainer>
   );
