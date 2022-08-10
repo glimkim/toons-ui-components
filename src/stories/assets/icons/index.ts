@@ -1,0 +1,9 @@
+export { ReactComponent as Alert } from './alert-icon.svg';
+export { ReactComponent as AlertActive } from './alert-icon-active.svg';
+export { ReactComponent as Error } from './error-icon.svg';
+export { ReactComponent as Success } from './success-icon.svg';
+export { ReactComponent as Warning } from './warning-icon.svg';
+export { ReactComponent as Info } from './info-icon.svg';
+export { ReactComponent as Kakao } from './kakao-icon.svg';
+export { ReactComponent as Google } from './google-icon.svg';
+export { ReactComponent as Edit } from './edit-icon.svg';
