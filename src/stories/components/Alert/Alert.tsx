@@ -2,10 +2,10 @@ import React, { HTMLAttributes, useCallback, useEffect, useMemo, useState } from
 import { CSSTransition } from 'react-transition-group';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled, { css } from 'styled-components';
-import { ReactComponent as SuccessIcon } from '../../assets/success_icon.svg';
-import { ReactComponent as InfoIcon } from '../../assets/info_icon.svg';
-import { ReactComponent as WarningIcon } from '../../assets/warning_icon.svg';
-import { ReactComponent as ErrorIcon } from '../../assets/error_icon.svg';
+import { ReactComponent as SuccessIcon } from '../../assets/icons/success-icon.svg';
+import { ReactComponent as InfoIcon } from '../../assets/icons/info-icon.svg';
+import { ReactComponent as WarningIcon } from '../../assets/icons/warning-icon.svg';
+import { ReactComponent as ErrorIcon } from '../../assets/icons/error-icon.svg';
 
 type AlertType = 'INFO' | 'ERROR' | 'WARNING' | 'SUCCESS';
 interface AlertTheme {

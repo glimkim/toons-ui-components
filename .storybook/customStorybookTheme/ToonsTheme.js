@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import ToonsLogo from '../../static/logo_dark.png';
+import ToonsLogo from '../../static/logo-dark.png';
 
 export default create({
   base: 'dark',

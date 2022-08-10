@@ -1,11 +1,10 @@
 import React from 'react';
-import { ReactComponent as BasicLogo } from '../../assets/logo_basic.svg';
-import { ReactComponent as LightLogo } from '../../assets/logo_light.svg';
-import { ReactComponent as DarkLogo } from '../../assets/logo_dark.svg';
+import { ReactComponent as BasicLogo } from '../../assets/logo-basic.svg';
+import { ReactComponent as LightLogo } from '../../assets/logo-light.svg';
+import { ReactComponent as DarkLogo } from '../../assets/logo-dark.svg';
 import styled, { css } from 'styled-components';
 
 type LogoStyle = 'DARK' | 'LIGHT' | 'BASIC';
-
 interface LogoProps {
   style: LogoStyle;
   width?: string;

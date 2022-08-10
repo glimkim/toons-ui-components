@@ -7,13 +7,17 @@ export default {
   component: ListItem,
 } as ComponentMeta<typeof ListItem>;
 
-const Template: ComponentStory<typeof ListItem> = ({ name, ...args }) => <ListItem name={name} {...args} />;
+const Template: ComponentStory<typeof ListItem> = ({ ...args }) => <ListItem {...args} />;
 
 export const ToonsListItem = Template.bind({});
 
 ToonsListItem.args = {
-  name: 'NAME',
-  day: 'FRIDAY',
+  itemInfo: {
+    name: 'NAME',
+    day: 'FRIDAY',
+    thumbnail: '',
+    link: '',
+  },
   onToggleItem: (isActive, handleToggleView) => {
     handleToggleView();
   },

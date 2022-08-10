@@ -1,17 +1,18 @@
 import React, { HTMLAttributes, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../Button/Button';
-import { ReactComponent as AlertIcon } from '../../assets/alert-icon.svg';
-import { ReactComponent as ActiveAlertIcon } from '../../assets/alert-icon-active.svg';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
+import Icon from '../Icon/Icon';
 
 type DayOfWeek = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
 
 export interface ListItemProps extends HTMLAttributes<HTMLLIElement> {
-  name: string;
-  day: DayOfWeek;
-  thumbnail: string;
-  link: string;
+  itemInfo: {
+    name: string;
+    day: DayOfWeek;
+    thumbnail: string;
+    link: string;
+  };
   onToggleItem: (isActive: boolean, handleToggleView: () => void) => void;
   isActive?: boolean;
 }
@@ -29,12 +30,9 @@ const days: {
 };
 
 const ListItem = ({
-  name,
-  day,
-  thumbnail,
-  link,
+  itemInfo: { name, day, thumbnail, link },
   onToggleItem,
-  isActive: initialActive = true,
+  isActive: initialActive = false,
   ...props
 }: ListItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(initialActive);
@@ -69,7 +67,7 @@ const ListItem = ({
         </ImageFigure>
         <ContentsBox className="contentBox">
           <button className={alertBtnClassName} onClick={onClickItem}>
-            {isActive ? <ActiveAlertIcon /> : <AlertIcon />}
+            {isActive ? <Icon icon="AlertActive" /> : <Icon icon="Alert" />}
           </button>
           <h5>{name}</h5>
           <span className="day">{days[day]}웹툰</span>

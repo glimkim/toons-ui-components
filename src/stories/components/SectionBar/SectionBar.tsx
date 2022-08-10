@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as Kakao } from '../../assets/kakao_icon.svg';
-import { ReactComponent as Naver } from '../../assets/naver_icon.svg';
-import { ReactComponent as Toons } from '../../assets/toons_icon.svg';
+import { ReactComponent as Kakao } from '../../assets/kakao-logo-lettering.svg';
+import { ReactComponent as Naver } from '../../assets/naver-logo-lettering.svg';
+import { ReactComponent as Toons } from '../../assets/toons-logo-lettering.svg';
 
 type Platform = 'NAVER' | 'KAKAO';
 
