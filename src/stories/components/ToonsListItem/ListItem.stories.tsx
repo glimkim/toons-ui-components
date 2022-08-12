@@ -21,6 +21,7 @@ ToonsListItem.args = {
   onToggleItem: (isActive, handleToggleView) => {
     handleToggleView();
   },
+  isActive: false,
 };
 
 /* export const LoggedOut = Template.bind({});

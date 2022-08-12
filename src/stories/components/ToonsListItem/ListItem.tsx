@@ -14,7 +14,7 @@ export interface ListItemProps extends HTMLAttributes<HTMLLIElement> {
     link: string;
   };
   onToggleItem: (isActive: boolean, handleToggleView: () => void) => void;
-  isActive?: boolean;
+  isActive: boolean;
 }
 
 const days: {
@@ -32,7 +32,7 @@ const days: {
 const ListItem = ({
   itemInfo: { name, day, thumbnail, link },
   onToggleItem,
-  isActive: initialActive = false,
+  isActive: initialActive,
   ...props
 }: ListItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(initialActive);
