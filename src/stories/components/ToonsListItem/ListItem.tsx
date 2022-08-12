@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useCallback, useState } from 'react';
+import React, { HTMLAttributes, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../Button/Button';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
@@ -35,7 +35,7 @@ const ListItem = ({
   isActive: initialActive,
   ...props
 }: ListItemProps) => {
-  const [isActive, setIsActive] = useState<boolean>(initialActive);
+  const [isActive, setIsActive] = useState<boolean>(false);
   const [alertBtnClassName, setAlertBtnClassName] = useState('alertBtn');
 
   const onClickItem = useCallback(
@@ -58,6 +58,10 @@ const ListItem = ({
     },
     [link],
   );
+
+  useEffect(() => {
+    setIsActive(initialActive);
+  }, [initialActive]);
 
   return (
     <ToonsThemeProvider>
