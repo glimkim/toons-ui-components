@@ -1,16 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-interface Tab {
+export interface Tab {
   title: string;
   contents: React.ReactNode;
 }
-interface LogoProps {
+interface TabBarProps {
   headTitle?: string;
   tabs: Tab[];
 }
 
-function TabBar({ headTitle, tabs }: LogoProps) {
+function TabBar({ headTitle, tabs }: TabBarProps) {
   const [activeTab, setActiveTab] = useState(0);
 
   const onClickTab = useCallback(
@@ -66,7 +66,7 @@ const Tab = styled.li<{ isActive: boolean }>`
       &::after {
         display: block;
         width: 0;
-        border-bottom: 3px solid ${({ theme: { colors } }) => colors.main};
+        border-bottom: 5px solid ${({ theme: { colors } }) => colors.main};
         content: '';
         transition: 0.4s;
       }
@@ -84,6 +84,7 @@ const Tab = styled.li<{ isActive: boolean }>`
         font-weight: bold;
         transform: translateY(-1rem);
         font-size: 1.25rem;
+        font-weight: bold;
         p {
           &::after {
             width: 100%;

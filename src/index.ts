@@ -1,11 +1,11 @@
 import Icon from './stories/components/Icon/Icon';
-import TabBar from './stories/components/TabBar/TabBar';
+import TabBar, { Tab } from './stories/components/TabBar/TabBar';
 import { Theme as ToonsTheme } from './themes/index';
 import theme from './themes/default';
 import darkTheme from './themes/dark';
 import Button from './stories/components/Button/Button';
 import Input from './stories/components/Input/Input';
-import ToonsListItem from './stories/components/ToonsListItem/ListItem';
+import ListItem from './stories/components/ListItem/ListItem';
 import Checkbox from './stories/components/Checkbox/Checkbox';
 import { ToonsGlobalCss } from './styles/globalStyle';
 import Dialog from './stories/components/Dialog/Dialog';
@@ -17,7 +17,7 @@ import Logo from './stories/components/Logo/Logo';
 export {
   Button,
   Input,
-  ToonsListItem,
+  ListItem as ToonsListItem,
   Checkbox,
   Loader,
   Alert,
@@ -30,4 +30,4 @@ export {
   theme,
   darkTheme,
 };
-export type { ToonsTheme, AlertProps };
+export type { ToonsTheme, AlertProps, Tab };
