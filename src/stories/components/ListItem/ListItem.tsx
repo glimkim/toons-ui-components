@@ -5,16 +5,17 @@ import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import Icon from '../Icon/Icon';
 
 type DayOfWeek = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
-
+interface WebtoonItem {
+  name: string;
+  thumbnail: string;
+  dayOfWeek: DayOfWeek;
+  platform: 'NAVER' | 'KAKAO';
+  link: string;
+  toNotify: boolean;
+}
 export interface ListItemProps extends HTMLAttributes<HTMLLIElement> {
-  itemInfo: {
-    name: string;
-    day: DayOfWeek;
-    thumbnail: string;
-    link: string;
-  };
+  itemInfo: WebtoonItem;
   onToggleItem: (isActive: boolean, handleToggleView: () => void) => void;
-  isActive: boolean;
 }
 
 const days: {
@@ -30,9 +31,8 @@ const days: {
 };
 
 const ListItem = ({
-  itemInfo: { name, day, thumbnail, link },
+  itemInfo: { name, dayOfWeek, thumbnail, link, toNotify },
   onToggleItem,
-  isActive: initialActive,
   ...props
 }: ListItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -60,8 +60,8 @@ const ListItem = ({
   );
 
   useEffect(() => {
-    setIsActive(initialActive);
-  }, [initialActive]);
+    setIsActive(toNotify);
+  }, [toNotify]);
 
   return (
     <ToonsThemeProvider>
@@ -74,7 +74,7 @@ const ListItem = ({
             {isActive ? <Icon icon="AlertActive" /> : <Icon icon="Alert" />}
           </button>
           <h5>{name}</h5>
-          <span className="day">{days[day]}웹툰</span>
+          <span className="day">{days[dayOfWeek]}웹툰</span>
           <Button size="small" fullWidth buttonTheme={isActive ? 'secondary' : 'primary'} onClick={onClickViewLink}>
             VIEW →
           </Button>
@@ -121,7 +121,7 @@ const ContentsBox = styled.div`
     }
     &:hover {
       svg {
-        transform: scale(1.4, 1.4);
+        transform: scale(1.5, 1.5);
       }
     }
 
@@ -151,7 +151,7 @@ const ContentsBox = styled.div`
       transform: scale(1, 1) rotate(45deg);
     }
     50% {
-      transform: scale(1.5, 1.5) translateY(-10px) rotate(-45deg);
+      transform: scale(2, 2) translateY(-10px) rotate(-45deg);
     }
     100% {
       transform: scale(1, 1) rotate(0);
@@ -162,7 +162,6 @@ const ContentsBox = styled.div`
 const ToonsLi = styled.li<{ isActive: boolean }>`
   position: relative;
   display: flex;
-  width: 243px;
   padding: 0.7rem;
   gap: 1rem;
   border: 1px solid ${(props) => props.theme.colors.main};
@@ -186,27 +185,7 @@ const ToonsLi = styled.li<{ isActive: boolean }>`
       height: 90px;
     }
   }
-  @media screen and (max-width: calc(1380px)) {
-    width: 300px;
-  }
-  @media screen and (max-width: 1300px) {
-    width: 233px;
-  }
-  @media screen and (max-width: 1250px) {
-    width: 260px;
-  }
-  @media screen and (max-width: 1150px) {
-    width: 300px;
-  }
-  @media screen and (max-width: 975px) {
-    width: 200px;
-  }
-  @media screen and (max-width: 880px) {
-    width: 250px;
-  }
-  @media screen and (max-width: 820px) {
-    width: 233px;
-  }
+
   @media screen and (max-width: 767px) {
     flex-direction: column;
     align-items: flex-start;

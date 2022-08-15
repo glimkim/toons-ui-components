@@ -14,14 +14,15 @@ export const ToonsListItem = Template.bind({});
 ToonsListItem.args = {
   itemInfo: {
     name: 'NAME',
-    day: 'FRIDAY',
+    dayOfWeek: 'FRIDAY',
     thumbnail: '',
     link: '',
+    toNotify: false,
+    platform: 'NAVER',
   },
   onToggleItem: (isActive, handleToggleView) => {
     handleToggleView();
   },
-  isActive: false,
 };
 
 /* export const LoggedOut = Template.bind({});
