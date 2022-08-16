@@ -38,9 +38,4 @@ const getListItems = () => {
 
 ToonsList.args = {
   children: <>{getListItems()}</>,
-  columnsOnScreenSize: {
-    '1440': 5,
-    '1370': 4,
-    '1280': 3,
-  },
 };

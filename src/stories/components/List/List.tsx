@@ -1,7 +1,7 @@
-import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-type ScreenSize = '1440' | '1370' | '1280' | '1080' | '960' | '840' | '767';
+type ScreenSize = '1280' | '1080' | '960' | '840' | '767' | '540' | '414';
 
 type ColumnGuide = {
   [key in ScreenSize]?: number;
@@ -13,54 +13,50 @@ interface ListProps extends HTMLAttributes<HTMLUListElement> {
   columnsOnScreenSize?: ColumnGuide;
 }
 
-function List({ id, children, columnsOnScreenSize }: ListProps) {
-  const listRef = useRef<HTMLUListElement | null>(null);
-  const [liCount, setLiCount] = useState(0);
-
-  useEffect(() => {
-    const liElements = listRef.current?.querySelectorAll('li');
-    setLiCount(liElements?.length || 0);
-  }, [listRef]);
-
+function List({
+  id,
+  children,
+  columnsOnScreenSize = {
+    '1280': 4,
+    '1080': 3,
+    '767': 4,
+    '540': 3,
+    '414': 2,
+  },
+}: ListProps) {
   return (
-    <ToonsList id={id} ref={listRef} columnsOnScreenSize={columnsOnScreenSize}>
+    <ToonsList id={id} columnsOnScreenSize={columnsOnScreenSize}>
       {children}
-      {/* {liCount % 2 !== 1 && liCount % 3 === 0 ? (
-        <>
-          <li />
-          <li />
-        </>
-      ) : (
-        <>
-          <li />
-        </>
-      )} */}
     </ToonsList>
   );
 }
 
 const ToonsList = styled.ul<{ columnsOnScreenSize: ColumnGuide | undefined }>`
-  width: 100%;
+  width: 1280px;
+  max-width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1rem 0;
-  justify-content: space-between;
-  li {
-    width: calc(100% - 5 / 4rem);
+  gap: 1rem;
+  margin: 0 auto;
+
+  @media screen and (min-width: 1281px) {
+    li {
+      width: calc((100% - 4rem) / 5);
+    }
   }
 
   ${({ columnsOnScreenSize }) => {
     if (columnsOnScreenSize) {
       const keys = Object.keys(columnsOnScreenSize);
       let styles = ``;
-      keys.map((_key) => {
+      keys.map((_key, index) => {
         const columnCount = columnsOnScreenSize[_key as ScreenSize];
-        const itemWidth = `calc((100% / ${columnCount}) - ${columnCount! - 2 || 0}rem)`;
+        const itemWidth = `calc((100% - ${(columnCount! - 1 || 0) + 'rem'}) / ${columnCount!})`;
         styles += `
-          @media screen and (max-width: ${_key + 'px'}) {
+          @media screen and (max-width: ${_key + 'px'}) and (min-width: ${(keys[index - 1] || 0) + 'px'}) {
             li {
-              width: ${itemWidth} !important;
+              width: ${itemWidth};
             }
           }
         `;
