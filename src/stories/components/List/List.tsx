@@ -32,8 +32,7 @@ function List({
 }
 
 const ToonsList = styled.ul<{ columnsOnScreenSize: ColumnGuide | undefined }>`
-  width: 1280px;
-  max-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
