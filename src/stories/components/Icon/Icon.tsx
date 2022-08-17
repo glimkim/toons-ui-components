@@ -1,4 +1,4 @@
-import React, { FunctionComponent, SVGProps } from 'react';
+import React from 'react';
 import * as icons from '../../assets/icons';
 
 export type IconType = keyof typeof icons;

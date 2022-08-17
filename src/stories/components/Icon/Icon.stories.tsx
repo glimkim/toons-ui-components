@@ -10,6 +10,7 @@ export default {
       control: {
         type: 'select',
       },
+      defaultValue: 'Alert',
     },
   },
 } as ComponentMeta<typeof Icon>;
