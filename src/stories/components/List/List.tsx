@@ -1,7 +1,7 @@
-import React, { HTMLAttributes, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
-type ScreenSize = '1280' | '1080' | '960' | '840' | '767' | '540' | '414';
+type ScreenSize = '1281' | '1081' | '961' | '841' | '768' | '541' | '415';
 
 type ColumnGuide = {
   [key in ScreenSize]?: number;
@@ -9,7 +9,7 @@ type ColumnGuide = {
 
 interface ListProps extends HTMLAttributes<HTMLUListElement> {
   id: string;
-  children: React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
+  children: HTMLAttributes<HTMLLIElement>[] | HTMLAttributes<HTMLLIElement>;
   columnsOnScreenSize?: ColumnGuide;
 }
 
@@ -17,11 +17,11 @@ function List({
   id,
   children,
   columnsOnScreenSize = {
-    '1280': 4,
-    '1080': 3,
-    '767': 4,
-    '540': 3,
-    '414': 2,
+    '1281': 4,
+    '1081': 3,
+    '768': 4,
+    '541': 3,
+    '415': 2,
   },
 }: ListProps) {
   return (

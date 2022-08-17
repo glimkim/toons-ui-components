@@ -13,11 +13,13 @@ import Loader from './stories/components/Loader/Loader';
 import Alert, { AlertProps } from './stories/components/Alert/Alert';
 import SectionBar from './stories/components/SectionBar/SectionBar';
 import Logo from './stories/components/Logo/Logo';
+import List from './stories/components/List/List';
 
 export {
   Button,
   Input,
-  ListItem as ToonsListItem,
+  ListItem,
+  List,
   Checkbox,
   Loader,
   Alert,
