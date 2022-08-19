@@ -1,21 +1,36 @@
-import React, { HTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
 
 type ButtonSize = 'small' | 'medium' | 'large';
 type ButtonTheme = 'primary' | 'secondary';
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   size?: ButtonSize;
   buttonTheme?: ButtonTheme;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
-const Button = ({ children, size = 'medium', buttonTheme = 'primary', fullWidth = false, ...props }: ButtonProps) => {
+const Button = ({
+  children,
+  size = 'medium',
+  buttonTheme = 'primary',
+  fullWidth = false,
+  disabled,
+  ...props
+}: ButtonProps) => {
   return (
     <ToonsThemeProvider>
-      <ButtonComponent type="button" size={size} fullWidth={fullWidth} buttonTheme={buttonTheme} {...props}>
+      <ButtonComponent
+        type="button"
+        size={size}
+        fullWidth={fullWidth}
+        buttonTheme={buttonTheme}
+        disabled={disabled}
+        {...props}
+      >
         {children}
       </ButtonComponent>
     </ToonsThemeProvider>
@@ -41,6 +56,11 @@ const ButtonComponent = styled.button<{ size: ButtonSize; fullWidth: boolean; bu
   &:hover {
     background-color: ${(props) =>
       (props.buttonTheme === 'primary' ? props.theme.colors.main : props.theme.colors.gray40) + '90'};
+  }
+  &:disabled {
+    background-color: ${(props) =>
+      (props.buttonTheme === 'primary' ? props.theme.colors.main : props.theme.colors.gray40) + '90'};
+    color: ${(props) => props.theme.colors.gray40};
   }
 `;
 

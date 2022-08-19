@@ -27,6 +27,12 @@ export default {
       },
       defaultValue: false,
     },
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
   },
 } as ComponentMeta<typeof Button>;
 
