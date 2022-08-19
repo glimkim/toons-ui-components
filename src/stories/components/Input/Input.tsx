@@ -1,9 +1,10 @@
-import React, { HTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
 import Button from '../Button/Button';
+import _ from 'lodash';
 
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label?: string;
   placeholder?: string;
@@ -17,14 +18,14 @@ interface InputProps extends HTMLAttributes<HTMLInputElement> {
   };
 }
 
-function Input({ id, onChange, label, type = 'text', placeholder, errorText, withBtn, fullWidth = true }: InputProps) {
+function Input({ id, label, type = 'text', placeholder, errorText, withBtn, fullWidth = true, ...props }: InputProps) {
   return (
     <ToonsThemeProvider>
       <InputContainer fullWidth={fullWidth} hasError={!!errorText} hasBtn={!!withBtn}>
         {label && <label htmlFor={id}>{label}</label>}
         <div>
           <div className="InputWrapper">
-            <input id={id} type={type} onChange={onChange} placeholder={placeholder} />
+            <input id={id} type={type} placeholder={placeholder} {...props} />
             {withBtn && (
               <Button onClick={withBtn.onClickBtn} size="small">
                 {withBtn.btnText}

@@ -60,7 +60,6 @@ const ToonsList = styled.ul<{ columnsOnScreenSize: ColumnGuide | undefined }>`
           }
         `;
       });
-      console.log(styles);
       return css`
         ${styles}
       `;
