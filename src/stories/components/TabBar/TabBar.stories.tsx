@@ -27,4 +27,6 @@ ToonsTabBar.args = {
       contents: <div>'contents here'</div>,
     },
   ],
+  theme: 'BASIC',
+  headTitle: 'Your TabBar',
 };

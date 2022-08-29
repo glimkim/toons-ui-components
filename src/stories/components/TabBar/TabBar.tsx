@@ -1,16 +1,19 @@
+import { color } from '@storybook/theming';
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 
+export type TabTheme = 'BASIC' | 'MAIN';
 export interface Tab {
   title: string;
   contents: React.ReactNode;
 }
 interface TabBarProps {
-  headTitle?: string;
   tabs: Tab[];
+  headTitle?: string;
+  theme?: TabTheme;
 }
 
-function TabBar({ headTitle, tabs }: TabBarProps) {
+function TabBar({ headTitle, tabs, theme = 'BASIC' }: TabBarProps) {
   const [activeTab, setActiveTab] = useState(0);
 
   const onClickTab = useCallback(
@@ -21,16 +24,16 @@ function TabBar({ headTitle, tabs }: TabBarProps) {
   );
 
   return (
-    <TabBarContainer>
+    <TabBarContainer className={theme === 'BASIC' ? 'basic' : 'main'}>
       {headTitle && (
         <div className="headTitle">
           <h6>{headTitle}</h6>
         </div>
       )}
-      <ToonsTabBar>
+      <ToonsTabBar tabTheme={theme}>
         <ul className="tabHeader">
           {tabs.map((_tab, index) => (
-            <Tab key={index} isActive={activeTab === index}>
+            <Tab key={index} isActive={activeTab === index} tabTheme={theme}>
               <button onClick={() => onClickTab(index)}>
                 <p>{_tab.title}</p>
               </button>
@@ -43,7 +46,7 @@ function TabBar({ headTitle, tabs }: TabBarProps) {
   );
 }
 
-const Tab = styled.li<{ isActive: boolean }>`
+const Tab = styled.li<{ isActive: boolean; tabTheme: TabTheme }>`
   width: 11rem;
   max-width: 100%;
   height: 3rem;
@@ -75,11 +78,11 @@ const Tab = styled.li<{ isActive: boolean }>`
       color: #000;
       font-size: 1.125rem;
     }
-    ${({ isActive, theme }) =>
+    ${({ isActive, theme: { colors }, tabTheme }) =>
       isActive &&
       css`
         height: 4.05rem;
-        background-color: ${theme.colors.gray00};
+        background-color: ${tabTheme === 'BASIC' ? colors.gray00 : colors.mainPale};
         color: #000;
         font-weight: bold;
         transform: translateY(-1rem);
@@ -94,7 +97,7 @@ const Tab = styled.li<{ isActive: boolean }>`
   }
 `;
 
-const ToonsTabBar = styled.div`
+const ToonsTabBar = styled.div<{ tabTheme: TabTheme }>`
   ul.tabHeader {
     display: flex;
     justify-content: flex-start;
@@ -107,7 +110,6 @@ const ToonsTabBar = styled.div`
     width: 100%;
     min-height: 5rem;
     padding: 3rem;
-    background-color: ${({ theme: { colors } }) => colors.gray00};
     border: 1px solid #000;
   }
 `;
@@ -118,11 +120,27 @@ const TabBarContainer = styled.div`
   div.headTitle {
     padding: 1rem 0;
     margin-bottom: 2rem;
-    border-bottom: 2px solid #fff;
     h6 {
       font-family: Black Han Sans;
       font-size: 1.25rem;
       color: ${({ theme }) => theme.colors.gray40};
+    }
+  }
+
+  &.basic {
+    div.headTitle {
+      border-bottom: 2px solid #fff;
+    }
+    div.tabContents {
+      background-color: ${({ theme: { colors } }) => colors.gray00};
+    }
+  }
+  &.main {
+    div.headTitle {
+      border-bottom: 2px solid ${({ theme: { colors } }) => colors.main};
+    }
+    div.tabContents {
+      background-color: ${({ theme: { colors } }) => colors.mainPale};
     }
   }
 `;
