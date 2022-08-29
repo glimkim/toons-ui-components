@@ -4,6 +4,7 @@ export interface Theme {
   name: string;
   colors: {
     main: string;
+    mainPale: string;
     white: string;
     gray00: string;
     gray10: string;

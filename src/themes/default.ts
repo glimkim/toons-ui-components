@@ -5,6 +5,7 @@ const theme: DefaultTheme = {
   name: 'default',
   colors: {
     main: '#92CFFF',
+    mainPale: '#D6F1FF',
     white: '#fff',
     gray00: '#F2F2F2',
     gray10: '#EDEDED',
