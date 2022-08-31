@@ -1,4 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export const ToonsGlobalCss = css`
   html,

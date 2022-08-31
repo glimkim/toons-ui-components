@@ -1,22 +1,25 @@
-import { color } from '@storybook/theming';
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
 
 export type TabTheme = 'BASIC' | 'MAIN';
 export interface Tab {
   title: string;
   contents: React.ReactNode;
+  onClickTab?: () => void;
 }
 interface TabBarProps {
   tabs: Tab[];
   headTitle?: string;
   theme?: TabTheme;
+  children?: React.ReactNode;
 }
 
-function TabBar({ headTitle, tabs, theme = 'BASIC' }: TabBarProps) {
+function TabBar({ headTitle, tabs, theme = 'BASIC', children }: TabBarProps) {
   const [activeTab, setActiveTab] = useState(0);
 
-  const onClickTab = useCallback(
+  const handleTabClick = useCallback(
     (index) => {
       setActiveTab(index);
     },
@@ -31,22 +34,49 @@ function TabBar({ headTitle, tabs, theme = 'BASIC' }: TabBarProps) {
         </div>
       )}
       <ToonsTabBar tabTheme={theme}>
-        <ul className="tabHeader">
-          {tabs.map((_tab, index) => (
-            <Tab key={index} isActive={activeTab === index} tabTheme={theme}>
-              <button onClick={() => onClickTab(index)}>
-                <p>{_tab.title}</p>
-              </button>
-            </Tab>
-          ))}
-        </ul>
-        <div className="tabContents">{tabs[activeTab].contents}</div>
+        {/* <ul className="tabHeader">
+          {tabs.length > 0 &&
+            tabs.map((_tab, index) => (
+              <Tab key={index} isActive={activeTab === index} tabTheme={theme}>
+                <button
+                  onClick={() => {
+                    handleTabClick(index);
+                    _tab.onClickTab && _tab.onClickTab();
+                  }}
+                >
+                  <p>{_tab.title}</p>
+                </button>
+              </Tab>
+            ))}
+        </ul> */}
+        <div className="tabHeader">
+          <Swiper spaceBetween={10} slidesPerView={'auto'}>
+            {tabs.map((_tab, index) => (
+              <SwiperSlide key={index}>
+                <Tab isActive={activeTab === index} tabTheme={theme}>
+                  <button
+                    onClick={() => {
+                      handleTabClick(index);
+                      _tab.onClickTab && _tab.onClickTab();
+                    }}
+                  >
+                    <p>{_tab.title}</p>
+                  </button>
+                </Tab>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="tabContents">
+          {tabs.length > 0 && tabs[activeTab].contents}
+          {children}
+        </div>
       </ToonsTabBar>
     </TabBarContainer>
   );
 }
 
-const Tab = styled.li<{ isActive: boolean; tabTheme: TabTheme }>`
+const Tab = styled.div<{ isActive: boolean; tabTheme: TabTheme }>`
   width: 11rem;
   max-width: 100%;
   height: 3rem;
@@ -84,11 +114,10 @@ const Tab = styled.li<{ isActive: boolean; tabTheme: TabTheme }>`
         height: 4.05rem;
         background-color: ${tabTheme === 'BASIC' ? colors.gray00 : colors.mainPale};
         color: #000;
-        font-weight: bold;
         transform: translateY(-1rem);
         font-size: 1.25rem;
-        font-weight: bold;
         p {
+          font-weight: bold;
           &::after {
             width: 100%;
           }
@@ -98,10 +127,9 @@ const Tab = styled.li<{ isActive: boolean; tabTheme: TabTheme }>`
 `;
 
 const ToonsTabBar = styled.div<{ tabTheme: TabTheme }>`
-  ul.tabHeader {
-    display: flex;
-    justify-content: flex-start;
-    gap: 0.5rem;
+  div.tabHeader {
+    position: relative;
+    z-index: 20;
     width: 100%;
   }
   div.tabContents {
@@ -116,6 +144,19 @@ const ToonsTabBar = styled.div<{ tabTheme: TabTheme }>`
 
 const TabBarContainer = styled.div`
   width: 100%;
+  .swiper {
+    width: 100%;
+    height: 4.05rem;
+    align-items: flex-end;
+    .swiper-wrapper {
+      align-items: flex-end;
+      .swiper-slide {
+        width: 11rem !important;
+        max-width: 100%;
+        height: 3rem;
+      }
+    }
+  }
 
   div.headTitle {
     padding: 1rem 0;
