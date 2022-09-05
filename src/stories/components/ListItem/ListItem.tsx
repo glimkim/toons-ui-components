@@ -115,6 +115,8 @@ const ContentsBox = styled.div`
     position: absolute;
     top: 0.7rem;
     right: 0.7rem;
+    width: fit-content;
+
     svg {
       width: 100%;
       transition: 0.4s;
@@ -155,6 +157,12 @@ const ContentsBox = styled.div`
     }
     100% {
       transform: scale(1, 1) rotate(0);
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    h5 {
+      font-size: 1.125rem;
     }
   }
 `;
