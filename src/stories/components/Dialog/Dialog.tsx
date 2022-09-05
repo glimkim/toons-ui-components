@@ -11,10 +11,14 @@ export interface DialogProps {
 
 const Dialog = React.forwardRef(({ open, children, onClose }: DialogProps, ref: ForwardedRef<HTMLDivElement>) => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(open);
-  const handleClose = useCallback(() => {
-    setDialogOpen(false);
-    onClose();
-  }, []);
+  const handleClose = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      setDialogOpen(false);
+      onClose();
+    },
+    [onClose, setDialogOpen],
+  );
 
   useEffect(() => {
     setDialogOpen(open);
