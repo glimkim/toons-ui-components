@@ -115,10 +115,9 @@ const ContentsBox = styled.div`
     position: absolute;
     top: 0.7rem;
     right: 0.7rem;
-    width: fit-content;
+    width: auto;
 
     svg {
-      width: 100%;
       transition: 0.4s;
     }
     &:hover {
