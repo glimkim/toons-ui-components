@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as Kakao } from '../../assets/kakao-logo-lettering.svg';
-import { ReactComponent as Naver } from '../../assets/naver-logo-lettering.svg';
 import { ReactComponent as Toons } from '../../assets/toons-logo-lettering.svg';
 
 type Platform = 'NAVER' | 'KAKAO';
@@ -11,21 +9,14 @@ interface SectionBarProps {
   isActive: boolean;
   onClickMore: () => void;
 }
-``;
-const platformSVG: {
-  [key in Platform]: JSX.Element;
-} = {
-  NAVER: <Naver className="platform" />,
-  KAKAO: <Kakao className="platform" />,
-};
 
 function SectionBar({ platform, isActive, onClickMore }: SectionBarProps) {
   return (
     <BarContainer className={isActive ? 'active' : ''}>
-      <figure>
-        {platformSVG[platform]}
+      <div className="titleBox">
+        <h5>{platform}</h5>
         <Toons />
-      </figure>
+      </div>
       <button onClick={onClickMore}>more →</button>
     </BarContainer>
   );
@@ -36,24 +27,30 @@ const BarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 2.13rem;
-  padding-bottom: 0.7rem;
+  height: 3.14rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid ${({ theme: { colors } }) => colors.gray50};
   transform: scaleX(0);
   transform-origin: left center;
-  overflow: hidden;
   transition: 0.4s;
-  figure {
+  overflow: hidden;
+  div.titleBox {
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    svg.platform {
-      height: 1.43rem;
-      width: auto;
+    h5 {
+      height: 3rem;
+      line-height: 3rem;
+      font-size: 2rem;
+      font-family: Black Han Sans, sans-serif;
+      color: ${({ theme }) => theme.colors.main};
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.7);
     }
   }
   button {
+    height: 100%;
+    padding-left: 1rem;
+    box-sizing: border-box;
     font-size: 1.125rem;
     transition: 0.3s;
     &:hover {
@@ -62,6 +59,19 @@ const BarContainer = styled.div`
   }
   &.active {
     transform: scaleX(1);
+  }
+
+  @media screen and (max-width: 414px) {
+    div.titleBox {
+      h5 {
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 1.75rem;
+      }
+      svg {
+        transform: scale(0.8, 0.8) translate(-5px, -2px);
+      }
+    }
   }
 `;
 

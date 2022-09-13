@@ -90,6 +90,7 @@ const ImageFigure = styled.figure`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
     border-radius: 5px;
   }
 `;
@@ -101,11 +102,12 @@ const ContentsBox = styled.div`
   justify-content: center;
 
   h5 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    height: 1.5rem;
     width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.25rem;
+    line-height: 1.5rem;
     white-space: nowrap;
     word-break: break-all;
     color: ${(props) => props.theme.colors.gray50};

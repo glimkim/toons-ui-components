@@ -105,6 +105,7 @@ export const ToonsGlobalCss = css`
     list-style: none;
     box-sizing: border-box;
     border: none;
+    color: #333;
   }
   button {
     cursor: pointer;

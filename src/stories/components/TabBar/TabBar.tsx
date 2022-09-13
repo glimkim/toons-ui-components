@@ -34,21 +34,6 @@ function TabBar({ headTitle, tabs, theme = 'BASIC', children }: TabBarProps) {
         </div>
       )}
       <ToonsTabBar tabTheme={theme}>
-        {/* <ul className="tabHeader">
-          {tabs.length > 0 &&
-            tabs.map((_tab, index) => (
-              <Tab key={index} isActive={activeTab === index} tabTheme={theme}>
-                <button
-                  onClick={() => {
-                    handleTabClick(index);
-                    _tab.onClickTab && _tab.onClickTab();
-                  }}
-                >
-                  <p>{_tab.title}</p>
-                </button>
-              </Tab>
-            ))}
-        </ul> */}
         <div className="tabHeader">
           <Swiper spaceBetween={10} slidesPerView={'auto'}>
             {tabs.map((_tab, index) => (
@@ -151,7 +136,6 @@ const TabBarContainer = styled.div`
     .swiper-wrapper {
       align-items: flex-end;
       .swiper-slide {
-        width: 11rem !important;
         max-width: 100%;
         height: 3rem;
       }
@@ -182,6 +166,24 @@ const TabBarContainer = styled.div`
     }
     div.tabContents {
       background-color: ${({ theme: { colors } }) => colors.mainPale};
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .swiper .swiper-wrapper .swiper-slide {
+      width: 10rem;
+    }
+  }
+
+  @media screen and (max-width: 1279px) {
+    .swiper .swiper-wrapper .swiper-slide {
+      width: 9rem;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .swiper .swiper-wrapper .swiper-slide {
+      width: 8rem;
     }
   }
 `;
