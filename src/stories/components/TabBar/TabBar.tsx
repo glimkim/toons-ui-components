@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
 
 export type TabTheme = 'BASIC' | 'MAIN';
 export interface Tab {
@@ -78,7 +77,6 @@ const Tab = styled.div<{ isActive: boolean; tabTheme: TabTheme }>`
     border-radius: 0.36rem 0.36rem 0 0;
     border: 1px solid #000;
     border-bottom: none;
-    transition: 0.2s;
     transform-origin: bottom center;
     p {
       &::after {
@@ -93,10 +91,12 @@ const Tab = styled.div<{ isActive: boolean; tabTheme: TabTheme }>`
       color: #000;
       font-size: 1.125rem;
     }
-    ${({ isActive, theme: { colors }, tabTheme }) =>
-      isActive &&
-      css`
-        height: 4.05rem;
+  }
+  ${({ isActive, theme: { colors }, tabTheme }) =>
+    isActive &&
+    css`
+      height: 4.05rem;
+      button {
         background-color: ${tabTheme === 'BASIC' ? colors.gray00 : colors.mainPale};
         color: #000;
         transform: translateY(-1rem);
@@ -107,8 +107,8 @@ const Tab = styled.div<{ isActive: boolean; tabTheme: TabTheme }>`
             width: 100%;
           }
         }
-      `}
-  }
+      }
+    `}
 `;
 
 const ToonsTabBar = styled.div<{ tabTheme: TabTheme }>`
