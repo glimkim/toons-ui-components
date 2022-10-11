@@ -48,7 +48,7 @@ const ListItem = ({
         });
       });
     },
-    [onToggleItem],
+    [onToggleItem, isActive],
   );
 
   const onClickViewLink = useCallback(
