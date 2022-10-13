@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
+import ListItem, { ListItemProps } from '../ListItem/ListItem';
 
 type ScreenSize = '1281' | '1081' | '961' | '841' | '768' | '541' | '415';
 
@@ -9,7 +10,7 @@ type ColumnGuide = {
 
 interface ListProps extends HTMLAttributes<HTMLUListElement> {
   id: string;
-  children: HTMLAttributes<HTMLLIElement>[] | HTMLAttributes<HTMLLIElement>;
+  children: React.ReactElement<ListItemProps>[];
   columnsOnScreenSize?: ColumnGuide;
 }
 

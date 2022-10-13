@@ -18,25 +18,22 @@ const getListItems = () => {
   for (let i = 1; i <= 15; i++) {
     numList.push(i);
   }
-  return numList.map(
-    (_num) =>
-      (
-        <ListItem
-          key={_num}
-          itemInfo={{
-            name: `NAME${_num}`,
-            dayOfWeek: 'FRIDAY',
-            thumbnail: '',
-            link: '',
-            toNotify: false,
-            platform: 'NAVER',
-          }}
-          onToggleItem={(isActive, handleToggleView) => {
-            handleToggleView();
-          }}
-        />
-      ) as React.HTMLAttributes<HTMLLIElement>,
-  );
+  return numList.map((_num) => (
+    <ListItem
+      key={_num}
+      itemInfo={{
+        name: `NAME${_num}`,
+        dayOfWeek: 'FRIDAY',
+        thumbnail: '',
+        link: '',
+        toNotify: false,
+        platform: 'NAVER',
+      }}
+      onToggleItem={(isActive, handleToggleView) => {
+        handleToggleView();
+      }}
+    />
+  ));
 };
 
 ToonsList.args = {
