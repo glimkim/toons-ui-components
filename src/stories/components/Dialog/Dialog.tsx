@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, RefObject, ForwardedRef } from 'react';
+import React, { useState, useCallback, useEffect, ForwardedRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ToonsThemeProvider from 'src/styles/ToonsThemeProvider';
 import styled from 'styled-components';
@@ -6,16 +6,16 @@ import styled from 'styled-components';
 export interface DialogProps {
   open: boolean;
   children: React.ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const Dialog = React.forwardRef(({ open, children, onClose }: DialogProps, ref: ForwardedRef<HTMLDivElement>) => {
-  const [dialogOpen, setDialogOpen] = useState<boolean>(open);
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const handleClose = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       setDialogOpen(false);
-      onClose();
+      onClose && onClose();
     },
     [onClose, setDialogOpen],
   );
@@ -26,6 +26,10 @@ const Dialog = React.forwardRef(({ open, children, onClose }: DialogProps, ref: 
     return () => {
       setDialogOpen(false);
     };
+  }, [open]);
+
+  useEffect(() => {
+    open ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto');
   }, [open]);
 
   return (
@@ -42,7 +46,7 @@ const Dialog = React.forwardRef(({ open, children, onClose }: DialogProps, ref: 
 
 const DialogContainer = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: 10000;
   top: 0;
   left: 0;
   display: flex;
