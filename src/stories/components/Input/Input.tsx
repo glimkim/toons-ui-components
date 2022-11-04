@@ -11,6 +11,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: 'email' | 'number' | 'password' | 'tel' | 'text' | 'time' | 'url';
   errorText?: string;
   fullWidth?: boolean;
+  disabled?: boolean;
   withBtn?: {
     disabled?: boolean;
     btnText: string;
@@ -18,14 +19,24 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   };
 }
 
-function Input({ id, label, type = 'text', placeholder, errorText, withBtn, fullWidth = true, ...props }: InputProps) {
+function Input({
+  id,
+  label,
+  type = 'text',
+  placeholder,
+  errorText,
+  withBtn,
+  disabled,
+  fullWidth = true,
+  ...props
+}: InputProps) {
   return (
     <ToonsThemeProvider>
       <InputContainer fullWidth={fullWidth} hasError={!!errorText} hasBtn={!!withBtn}>
         {label && <label htmlFor={id}>{label}</label>}
         <div>
           <div className="InputWrapper">
-            <input id={id} type={type} placeholder={placeholder} {...props} />
+            <input id={id} type={type} placeholder={placeholder} disabled={disabled} {...props} />
             {withBtn && (
               <Button onClick={withBtn.onClickBtn} size="small">
                 {withBtn.btnText}
@@ -65,7 +76,11 @@ const InputContainer = styled.div<{ fullWidth: boolean; hasError: boolean; hasBt
       background-color: ${({ theme }) => (theme.name === 'dark' ? theme.colors.gray00 : '#fff')};
       color: ${({ theme }) => theme.colors.gray50};
       transition: 0.3s ease-in-out;
-
+      &:disabled {
+        background-color: ${({ theme }) => (theme.name === 'dark' ? theme.colors.gray00 + '30' : '#ffffff30')};
+        font-weight: bold;
+        color: ${({ theme }) => theme.colors.gray40};
+      }
       &:focus {
         box-shadow: 1px 2px 5px
           ${({ theme, hasError }) => (hasError ? theme.colors.red + '50' : theme.colors.main + 60)};

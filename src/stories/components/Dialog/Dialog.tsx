@@ -46,7 +46,7 @@ const Dialog = React.forwardRef(({ open, children, onClose }: DialogProps, ref: 
 
 const DialogContainer = styled.div`
   position: fixed;
-  z-index: 10000;
+  z-index: 1000;
   top: 0;
   left: 0;
   display: flex;

@@ -12,6 +12,12 @@ export default {
       },
       defaultValue: true,
     },
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: true,
+    },
     type: {
       control: {
         type: 'select',

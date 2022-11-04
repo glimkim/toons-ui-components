@@ -1,13 +1,13 @@
 {
+  "homepage": "http://glimkim.github.io/toons-ui-components",
   "name": "toons-components",
-  "version": "0.2.82",
+  "version": "0.2.84",
   "description": "component library for Toons project",
   "license": "UNLICENSED",
   "author": {
     "name": "Lim Kim",
     "email": "limkimdev@gmail.com"
   },
-  "homepage": "https://github.com/glimkim/toons-ui-components.git",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -37,7 +37,9 @@
     "start": "start-storybook -p 6006 -s public",
     "build": "rollup -c",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "eslintConfig": {
     "extends": [
@@ -90,6 +92,7 @@
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
     "rollup": "^2.71.1",
