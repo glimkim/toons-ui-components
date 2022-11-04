@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="error_icon" transform="translate(-8250.383 639.646)">
+    <g id="cancel_circle_close_delete_discard_file_x_icon_123219" transform="translate(8250.383 -639.646)">
+      <g id="Layer_2" data-name="Layer 2" transform="translate(0 0)">
+        <path id="패스_44" data-name="패스 44" d="M13,23A10,10,0,1,1,23,13,10,10,0,0,1,13,23ZM13,4.538A8.462,8.462,0,1,0,21.462,13,8.462,8.462,0,0,0,13,4.538Z" transform="translate(-3 -3)" fill="#99312b"/>
+        <path id="패스_45" data-name="패스 45" d="M11.628,19.851a.863.863,0,0,1-.616-1.475l7.367-7.367a.881.881,0,0,1,1.267,1.223l-7.41,7.41A.868.868,0,0,1,11.628,19.851Z" transform="translate(-5.31 -5.303)" fill="#99312b"/>
+        <path id="패스_46" data-name="패스 46" d="M18.993,19.86a.868.868,0,0,1-.607-.252l-7.367-7.367a.868.868,0,0,1,1.223-1.223l7.41,7.367a.847.847,0,0,1-.659,1.475Z" transform="translate(-5.324 -5.318)" fill="#99312b"/>
+      </g>
+    </g>
+  </g>
+</svg>
